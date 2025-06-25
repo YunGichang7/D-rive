@@ -34,38 +34,67 @@ export default function TechnologySection() {
   ];
 
   return (
-    <section id="technology" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="technology" className="py-24 bg-[var(--drive-light-gray)] relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute top-10 right-10 w-64 h-64 bg-[var(--drive-primary)]/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-10 left-10 w-48 h-48 bg-[var(--drive-secondary)]/5 rounded-full blur-2xl"></div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">기술 소개</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center px-4 py-2 rounded-full bg-[var(--drive-secondary)]/10 text-[var(--drive-secondary)] text-sm font-medium mb-6"
+          >
+            <span>첨단 기술 솔루션</span>
+          </motion.div>
+          <h2 className="text-[var(--drive-dark)] mb-6">기술 소개</h2>
+          <p className="text-xl text-[var(--drive-gray)] max-w-3xl mx-auto leading-relaxed">
             첨단 센서 기술과 AI 분석을 통해 운전자의 행동을 실시간으로 모니터링하고
             개선 방안을 제시합니다.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
           {technologies.map((tech, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
+              initial={{ opacity: 0, y: 50, scale: 0.9 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ 
+                duration: 0.8, 
+                delay: index * 0.15,
+                type: "spring",
+                stiffness: 100
+              }}
               viewport={{ once: true }}
+              className="h-full"
             >
-              <Card className="bg-gray-50 card-hover h-full">
-                <CardContent className="p-8">
-                  <div className={`w-16 h-16 ${tech.bgColor} rounded-xl flex items-center justify-center mb-6`}>
+              <Card className="bg-white border-0 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 h-full group">
+                <CardContent className="p-8 h-full flex flex-col">
+                  <motion.div 
+                    initial={{ scale: 0, rotate: -180 }}
+                    whileInView={{ scale: 1, rotate: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.15 + 0.3 }}
+                    viewport={{ once: true }}
+                    className={`w-16 h-16 ${tech.bgColor} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
+                  >
                     <tech.icon className={`w-8 h-8 ${tech.iconColor}`} />
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-4">{tech.title}</h3>
-                  <p className="text-gray-600">{tech.description}</p>
+                  </motion.div>
+                  <h3 className="text-xl font-bold text-[var(--drive-dark)] mb-4 group-hover:text-[var(--drive-primary)] transition-colors duration-300">
+                    {tech.title}
+                  </h3>
+                  <p className="text-[var(--drive-gray)] leading-relaxed flex-grow">
+                    {tech.description}
+                  </p>
                 </CardContent>
               </Card>
             </motion.div>

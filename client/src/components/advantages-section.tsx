@@ -66,42 +66,80 @@ export default function AdvantagesSection() {
   ];
 
   return (
-    <section id="advantages" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="advantages" className="py-24 bg-[var(--drive-light-gray)] relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute top-0 left-1/4 w-72 h-72 bg-[var(--drive-primary)]/3 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-[var(--drive-secondary)]/3 rounded-full blur-2xl"></div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">경쟁력 분석</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center px-4 py-2 rounded-full bg-[var(--drive-primary)]/10 text-[var(--drive-primary)] text-sm font-medium mb-6"
+          >
+            <span>시장 분석 및 경쟁력</span>
+          </motion.div>
+          <h2 className="text-[var(--drive-dark)] mb-6">경쟁력 분석</h2>
+          <p className="text-xl text-[var(--drive-gray)] max-w-3xl mx-auto leading-relaxed">
             디라이브만의 차별화된 경쟁력과 시장 기회를 분석합니다.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
           {swotAnalysis.map((item, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
+              initial={{ opacity: 0, y: 50, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ 
+                duration: 0.8, 
+                delay: index * 0.1,
+                type: "spring",
+                stiffness: 100
+              }}
               viewport={{ once: true }}
             >
-              <Card className={`${item.bgColor} border-none`}>
+              <Card className={`${item.bgColor} border-0 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 group`}>
                 <CardContent className="p-8">
-                  <h3 className={`text-2xl font-bold ${item.textColor} mb-6 flex items-center`}>
-                    <item.icon className="w-8 h-8 mr-3" />
+                  <motion.h3 
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 + 0.2 }}
+                    viewport={{ once: true }}
+                    className={`text-2xl font-bold ${item.textColor} mb-8 flex items-center group-hover:scale-105 transition-transform duration-300`}
+                  >
+                    <motion.div
+                      initial={{ scale: 0, rotate: -180 }}
+                      whileInView={{ scale: 1, rotate: 0 }}
+                      transition={{ duration: 0.6, delay: index * 0.1 + 0.4 }}
+                      viewport={{ once: true }}
+                    >
+                      <item.icon className="w-8 h-8 mr-4" />
+                    </motion.div>
                     {item.title}
-                  </h3>
-                  <ul className="space-y-3">
+                  </motion.h3>
+                  <ul className="space-y-4">
                     {item.items.map((listItem, itemIndex) => (
-                      <li key={itemIndex} className="flex items-start">
-                        <span className={`w-2 h-2 ${item.bulletColor} rounded-full mt-2 mr-3 flex-shrink-0`}></span>
-                        <span className={`${item.textColor.replace('800', '700')}`}>{listItem}</span>
-                      </li>
+                      <motion.li 
+                        key={itemIndex} 
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 + itemIndex * 0.1 + 0.6 }}
+                        viewport={{ once: true }}
+                        className="flex items-start group-hover:translate-x-1 transition-transform duration-300"
+                      >
+                        <span className={`w-3 h-3 ${item.bulletColor} rounded-full mt-2 mr-4 flex-shrink-0`}></span>
+                        <span className={`${item.textColor.replace('800', '700')} leading-relaxed`}>{listItem}</span>
+                      </motion.li>
                     ))}
                   </ul>
                 </CardContent>

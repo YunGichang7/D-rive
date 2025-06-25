@@ -97,7 +97,9 @@ The application follows a monorepo structure with clear separation between front
 
 ## Changelog
 - June 25, 2025. Initial setup
+- June 25, 2025. Enhanced design system with Pretendard font, improved color palette (#00C48C eco green, charcoal backgrounds), and comprehensive scroll animations across all sections
 
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
+Design preferences: Tech-focused modern design with Pretendard font, eco green (#00C48C) accent color, charcoal/gray base colors, extensive scroll-triggered animations, glassmorphism effects, and data-driven visual hierarchy.

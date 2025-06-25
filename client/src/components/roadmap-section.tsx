@@ -37,17 +37,26 @@ export default function RoadmapSection() {
   ];
 
   return (
-    <section id="roadmap" className="py-20 bg-gray-50">
+    <section id="roadmap" className="py-24 bg-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">사업 로드맵</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center px-4 py-2 rounded-full bg-[var(--drive-accent)]/10 text-[var(--drive-accent)] text-sm font-medium mb-6"
+          >
+            <span>단계적 성장 전략</span>
+          </motion.div>
+          <h2 className="text-[var(--drive-dark)] mb-6">사업 로드맵</h2>
+          <p className="text-xl text-[var(--drive-gray)] max-w-3xl mx-auto leading-relaxed">
             체계적인 단계별 접근을 통해 시장 진입부터 성장까지의 계획을 제시합니다.
           </p>
         </motion.div>
@@ -57,23 +66,39 @@ export default function RoadmapSection() {
             {roadmapItems.map((item, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
+                initial={{ opacity: 0, x: -50, scale: 0.9 }}
+                whileInView={{ opacity: 1, x: 0, scale: 1 }}
+                transition={{ 
+                  duration: 0.8, 
+                  delay: index * 0.1,
+                  type: "spring",
+                  stiffness: 100
+                }}
                 viewport={{ once: true }}
-                className="timeline-item"
+                className="timeline-item group"
               >
-                <Card className="shadow-sm">
-                  <CardContent className="p-6">
-                    <div className="flex items-center mb-2">
-                      <Badge 
-                        className={`${item.color} text-white px-3 py-1 text-sm font-semibold mr-4`}
+                <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group-hover:scale-[1.02]">
+                  <CardContent className="p-8">
+                    <div className="flex flex-col sm:flex-row sm:items-center mb-4">
+                      <motion.div
+                        initial={{ scale: 0 }}
+                        whileInView={{ scale: 1 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
+                        viewport={{ once: true }}
                       >
-                        {item.date}
-                      </Badge>
-                      <h3 className="text-xl font-semibold text-gray-900">{item.title}</h3>
+                        <Badge 
+                          className={`${item.color} text-white px-4 py-2 text-sm font-semibold mb-3 sm:mb-0 sm:mr-6 inline-block`}
+                        >
+                          {item.date}
+                        </Badge>
+                      </motion.div>
+                      <h3 className="text-xl font-bold text-[var(--drive-dark)] group-hover:text-[var(--drive-primary)] transition-colors duration-300">
+                        {item.title}
+                      </h3>
                     </div>
-                    <p className="text-gray-600">{item.description}</p>
+                    <p className="text-[var(--drive-gray)] leading-relaxed">
+                      {item.description}
+                    </p>
                   </CardContent>
                 </Card>
               </motion.div>
