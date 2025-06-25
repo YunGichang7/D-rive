@@ -98,6 +98,7 @@ The application follows a monorepo structure with clear separation between front
 ## Changelog
 - June 25, 2025. Initial setup
 - June 25, 2025. Enhanced design system with Pretendard font, improved color palette (#00C48C eco green, charcoal backgrounds), and comprehensive scroll animations across all sections
+- June 25, 2025. Added comprehensive multi-page structure: BM Analysis, Team Introduction, Partner Companies, News Section with link management, and detailed Services pages with full navigation system
 
 ## User Preferences
 
