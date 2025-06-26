@@ -38,21 +38,21 @@ export default function ContactSection() {
     {
       icon: Mail,
       title: "이메일",
-      value: "contact@d-rive.co.kr",
+      value: "chilldrive99@gmail.com",
       bgColor: "bg-[var(--drive-primary)]/10",
       iconColor: "text-[var(--drive-primary)]"
     },
     {
       icon: Phone,
       title: "전화번호",
-      value: "02-1234-5678",
+      value: "010-7684-5650",
       bgColor: "bg-[var(--drive-secondary)]/10",
       iconColor: "text-[var(--drive-secondary)]"
     },
     {
       icon: MapPin,
       title: "주소",
-      value: "서울특별시 강남구 테헤란로 123",
+      value: "부산광역시 문현금융로 40 부산 국제 금융센터 55층",
       bgColor: "bg-[var(--drive-accent)]/10",
       iconColor: "text-[var(--drive-accent)]"
     },

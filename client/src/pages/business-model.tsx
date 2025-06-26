@@ -1,3 +1,4 @@
+import Navigation from "@/components/navigation";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -61,7 +62,9 @@ export default function BusinessModel() {
   ];
 
   return (
-    <div className="min-h-screen bg-white pt-16">
+    <>
+      <Navigation />
+      <div className="min-h-screen bg-white pt-16">
       {/* Hero Section */}
       <section className="tech-gradient py-24 relative overflow-hidden">
         <div className="absolute inset-0 opacity-5">
@@ -323,5 +326,6 @@ export default function BusinessModel() {
         </div>
       </section>
     </div>
+    </>
   );
 }

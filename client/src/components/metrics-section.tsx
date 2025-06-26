@@ -64,21 +64,7 @@ export default function MetricsSection() {
               }}
               className="text-center"
             >
-              <div className="glass-card p-8 rounded-2xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={isVisible ? { scale: 1 } : { scale: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.2 + 0.4 }}
-                  className="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center"
-                  style={{ backgroundColor: `${metric.color}20` }}
-                >
-                  <div
-                    className="text-2xl font-bold"
-                    style={{ color: metric.color }}
-                  >
-                    {index === 0 ? '16' : index === 1 ? '30' : '21'}
-                  </div>
-                </motion.div>
+              <div className="glass-card p-8 rounded-2xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-center items-center h-64">
                 
                 <motion.div
                   initial={{ opacity: 0 }}
