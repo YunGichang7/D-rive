@@ -38,12 +38,12 @@ export default function Navigation() {
     { path: "/news", label: "뉴스" },
   ];
 
-  const homeNavLinks = [
-    { id: "about", label: "회사소개" },
-    { id: "technology", label: "기술소개" },
-    { id: "roadmap", label: "로드맵" },
-    { id: "advantages", label: "경쟁력" },
-  ];
+  // const homeNavLinks = [
+  //   { id: "about", label: "회사소개" },
+  //   { id: "technology", label: "기술소개" },
+  //   { id: "roadmap", label: "로드맵" },
+  //   { id: "advantages", label: "경쟁력" },
+  // ];
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -75,7 +75,7 @@ export default function Navigation() {
                   {link.label}
                 </Link>
               ))}
-              {location === "/" && homeNavLinks.map((link) => (
+              {/* {location === "/" && homeNavLinks.map((link) => (
                 <button
                   key={link.id}
                   onClick={() => scrollToSection(link.id)}
@@ -83,7 +83,7 @@ export default function Navigation() {
                 >
                   {link.label}
                 </button>
-              ))}
+              ))} */}
               {location === "/" ? (
                 <Button
                   onClick={() => scrollToSection("contact")}
@@ -124,7 +124,7 @@ export default function Navigation() {
                       {link.label}
                     </Link>
                   ))}
-                  {location === "/" && homeNavLinks.map((link) => (
+                  {/* {location === "/" && homeNavLinks.map((link) => (
                     <button
                       key={link.id}
                       onClick={() => scrollToSection(link.id)}
@@ -132,7 +132,7 @@ export default function Navigation() {
                     >
                       {link.label}
                     </button>
-                  ))}
+                  ))} */}
                   {location === "/" ? (
                     <Button
                       onClick={() => scrollToSection("contact")}
