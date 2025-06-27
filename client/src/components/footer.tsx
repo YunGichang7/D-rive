@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { Facebook, Instagram, Linkedin } from "lucide-react";
+import ContactModal from "@/components/contact_modal";
 
 export default function Footer() {
   const services = [
@@ -14,6 +16,9 @@ export default function Footer() {
     "파트너십",
     "투자 문의"
   ];
+
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedReason, setSelectedReason] = useState("문의하기");
 
   return (
     <footer className="tech-gradient text-white py-16 relative overflow-hidden">
@@ -36,11 +41,11 @@ export default function Footer() {
               더 나은 운전 문화를 만들어갑니다.
             </p>
             <div className="flex space-x-6">
-              <a href="#" className="text-gray-400 hover:text-[var(--drive-primary)] transition-all duration-300 transform hover:scale-110">
+              {/* <a href="#" className="text-gray-400 hover:text-[var(--drive-primary)] transition-all duration-300 transform hover:scale-110">
                 <span className="sr-only">Facebook</span>
                 <Facebook className="w-7 h-7" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-[var(--drive-primary)] transition-all duration-300 transform hover:scale-110">
+              </a> */}
+              <a href="https://www.instagram.com/d.rive_official/" className="text-gray-400 hover:text-[var(--drive-primary)] transition-all duration-300 transform hover:scale-110">
                 <span className="sr-only">Instagram</span>
                 <Instagram className="w-7 h-7" />
               </a>
@@ -57,9 +62,9 @@ export default function Footer() {
             <ul className="space-y-3">
               {services.map((service, index) => (
                 <li key={index}>
-                  <a href="#" className="text-gray-400 hover:text-[var(--drive-primary)] transition-all duration-300 hover:translate-x-1 block">
+                  <span className="text-gray-400 block">
                     {service}
-                  </a>
+                  </span>
                 </li>
               ))}
             </ul>
@@ -71,9 +76,15 @@ export default function Footer() {
             <ul className="space-y-3">
               {support.map((item, index) => (
                 <li key={index}>
-                  <a href="#" className="text-gray-400 hover:text-[var(--drive-primary)] transition-all duration-300 hover:translate-x-1 block">
+                  <button
+                    onClick={() => {
+                      setSelectedReason(item);
+                      setModalOpen(true);
+                    }}
+                    className="text-left text-gray-400 hover:text-[var(--drive-primary)] transition-all duration-300 hover:translate-x-1 block w-full"
+                  >
                     {item}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -95,6 +106,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
+      <ContactModal show={modalOpen} onClose={() => setModalOpen(false)} initialReason={selectedReason} />
     </footer>
   );
 }

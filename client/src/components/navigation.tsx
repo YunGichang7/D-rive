@@ -3,10 +3,12 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "wouter";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import ContactModal from "@/components/contact_modal";
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [location] = useLocation();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -84,20 +86,12 @@ export default function Navigation() {
                   {link.label}
                 </button>
               ))} */}
-              {location === "/" ? (
-                <Button
-                  onClick={() => scrollToSection("contact")}
-                  className="bg-[var(--drive-primary)] text-white hover:bg-[var(--drive-primary)]/90"
-                >
-                  문의하기
-                </Button>
-              ) : (
-                <Link href="/#contact">
-                  <Button className="bg-[var(--drive-primary)] text-white hover:bg-[var(--drive-primary)]/90">
-                    문의하기
-                  </Button>
-                </Link>
-              )}
+              <Button
+                onClick={() => setIsModalOpen(true)}
+                className="bg-[var(--drive-primary)] text-white hover:bg-[var(--drive-primary)]/90"
+              >
+                문의하기
+              </Button>
             </div>
           </div>
 
@@ -133,26 +127,19 @@ export default function Navigation() {
                       {link.label}
                     </button>
                   ))} */}
-                  {location === "/" ? (
-                    <Button
-                      onClick={() => scrollToSection("contact")}
-                      className="bg-[var(--drive-primary)] text-white hover:bg-[var(--drive-primary)]/90 w-full"
-                    >
-                      문의하기
-                    </Button>
-                  ) : (
-                    <Link href="/#contact">
-                      <Button className="bg-[var(--drive-primary)] text-white hover:bg-[var(--drive-primary)]/90 w-full">
-                        문의하기
-                      </Button>
-                    </Link>
-                  )}
+                  <Button
+                    onClick={() => setIsModalOpen(true)}
+                    className="bg-[var(--drive-primary)] text-white hover:bg-[var(--drive-primary)]/90 w-full"
+                  >
+                    문의하기
+                  </Button>
                 </div>
               </SheetContent>
             </Sheet>
           </div>
         </div>
       </div>
+      <ContactModal show={isModalOpen} onClose={() => setIsModalOpen(false)} initialReason="문의하기" />
     </nav>
   );
 }
