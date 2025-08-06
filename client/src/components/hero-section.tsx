@@ -117,8 +117,8 @@ export default function HeroSection() {
                 className="glass-card rounded-3xl p-8 backdrop-blur-lg"
               >
                 <img
-                  src="https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600"
-                  alt="Modern car dashboard with digital display"
+                  src="/assets/percent_16.png"
+                  alt="16 percent fuel efficiency improvement"
                   className="rounded-2xl w-full h-auto"
                 />
               </motion.div>
